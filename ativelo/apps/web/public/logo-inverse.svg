@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 64" role="img" aria-labelledby="inverse-title inverse-desc">
+  <title id="inverse-title">ATIVELO</title>
+  <desc id="inverse-desc">Versão clara do logotipo ATIVELO para fundos escuros.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="17" y="10" width="14" height="44" rx="7" transform="rotate(24 24 32)" stroke="#F5F7F2" stroke-width="7"/>
+    <rect x="33" y="10" width="14" height="44" rx="7" transform="rotate(-24 40 32)" stroke="#B8F24A" stroke-width="7"/>
+    <path d="M24.5 38h15" stroke="#F5F7F2" stroke-width="5"/>
+    <g stroke="#F5F7F2" stroke-width="5">
+      <path d="M78 47l10-30 10 30M82 36h12"/>
+      <path d="M106 17h20m-10 0v30"/>
+      <path d="M136 17v30"/>
+      <path d="M146 17l10 30 10-30"/>
+      <path d="M194 17h-20v30h20M174 32h16"/>
+      <path d="M204 17v30h20"/>
+      <rect x="234" y="17" width="28" height="30" rx="14"/>
+    </g>
+  </g>
+</svg>

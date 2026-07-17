@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="mask-title mask-desc">
+  <title id="mask-title">Ícone mascarável ATIVELO</title>
+  <desc id="mask-desc">Símbolo ATIVELO centralizado em área segura sobre fundo verde.</desc>
+  <rect width="512" height="512" fill="#0F6B5C"/>
+  <g transform="translate(64 64) scale(6)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="17" y="10" width="14" height="44" rx="7" transform="rotate(24 24 32)" stroke="#F5F7F2" stroke-width="7"/>
+    <rect x="33" y="10" width="14" height="44" rx="7" transform="rotate(-24 40 32)" stroke="#B8F24A" stroke-width="7"/>
+    <path d="M24.5 38h15" stroke="#0B1220" stroke-width="5"/>
+  </g>
+</svg>

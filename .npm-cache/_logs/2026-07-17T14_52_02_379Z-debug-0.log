@@ -1,0 +1,19 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.16.0
+2 info using node@v24.18.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\gabriel.silva.IS.000\Documents\Projetos\Nova pasta (2)\.npmrc
+5 silly config load:file:C:\Users\gabriel.silva.IS.000\.npmrc
+6 silly config load:file:C:\Users\gabriel.silva.IS.000\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm view @supabase/supabase-js version
+8 verbose argv "--cache" ".npm-cache" "view" "@supabase/supabase-js" "version"
+9 verbose logfile logs-max:10 dir:C:\Users\gabriel.silva.IS.000\Documents\Projetos\Nova pasta (2)\.npm-cache\_logs\2026-07-17T14_52_02_379Z-
+10 verbose logfile C:\Users\gabriel.silva.IS.000\Documents\Projetos\Nova pasta (2)\.npm-cache\_logs\2026-07-17T14_52_02_379Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET 200 https://registry.npmjs.org/@supabase%2fsupabase-js 880ms (cache miss)
+13 verbose cwd C:\Users\gabriel.silva.IS.000\Documents\Projetos\Nova pasta (2)
+14 verbose os Windows_NT 10.0.26200
+15 verbose node v24.18.0
+16 verbose npm  v11.16.0
+17 verbose exit 0
+18 info ok

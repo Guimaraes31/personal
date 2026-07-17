@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+.npm-cache/
+
+# builds and test artifacts
+.next/
+dist/
+coverage/
+playwright-report/
+test-results/
+.expo/
+web-build/
+
+# local environment and secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# local Supabase
+supabase/.branches/
+supabase/.temp/
+
+# operating systems/editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# logs
+*.log
+npm-debug.log*
