@@ -2,18 +2,15 @@ import { rmSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.cwd();
-
 const targets = [
   ".npm-cache",
   "node_modules",
-  "apps/web/node_modules",
   "packages/core/node_modules",
-  "apps/web/.next",
-  "apps/web/coverage",
-  "apps/web/playwright-report",
-  "apps/web/test-results",
-  "packages/core/dist",
-  "coverage"
+  ".next",
+  "coverage",
+  "playwright-report",
+  "test-results",
+  "packages/core/dist"
 ];
 
 for (const relative of targets) {
@@ -25,5 +22,4 @@ for (const relative of targets) {
   rmSync(absolute, { recursive: true, force: true });
   console.log(`removed ${relative}`);
 }
-
 console.log("\nCleanup done. Run `npm install` to restore dependencies.");
