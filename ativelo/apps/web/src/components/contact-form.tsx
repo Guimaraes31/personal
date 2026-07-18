@@ -28,7 +28,7 @@ export function ContactForm() {
     formState: { errors, isSubmitting }
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { profile: "academy", consent: false }
+    defaultValues: { profile: "academy", consent: undefined as unknown as true }
   });
 
   async function onSubmit(values: ContactInput) {

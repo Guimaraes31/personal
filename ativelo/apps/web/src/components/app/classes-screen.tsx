@@ -33,7 +33,29 @@ export function ClassesScreen() {
   function bookingFor(classId: string) { return data.classBookings.find((item) => item.classSessionId === classId && item.studentId === session?.userId && (item.status === "confirmed" || item.status === "waitlisted")); }
   function reserve(classId: string) { reserveClass({ classSessionId: classId }); }
   function cancel(bookingId: string) { if (window.confirm("Cancelar esta reserva? A vaga poderá ser liberada para outra pessoa.")) cancelClassBooking({ bookingId }); }
-  function create() { const startsAt = new Date(`${date}T${startTime}:00-03:00`); const endsAt = new Date(startsAt.getTime() + Number(duration) * 60_000); if (title.trim().length < 3 || !Number.isFinite(startsAt.getTime()) || Number(capacity) < 1) { setFormError("Preencha nome, data, horário e capacidade válidos."); return; } const result = createClassSession({ title: title.trim(), professionalId: session?.role === "organization_admin" ? professionalId || professionals[0]?.id : undefined, startsAt: startsAt.toISOString(), endsAt: endsAt.toISOString(), capacity: Number(capacity), waitlistEnabled: waitlist }); if (result.ok) { setModalOpen(false); setTitle(""); setFormError(undefined); } else setFormError(result.error); }
+  function create() {
+    const startsAt = new Date(`${date}T${startTime}:00-03:00`);
+    const endsAt = new Date(startsAt.getTime() + Number(duration) * 60_000);
+    if (title.trim().length < 3 || !Number.isFinite(startsAt.getTime()) || Number(capacity) < 1) {
+      setFormError("Preencha nome, data, horário e capacidade válidos.");
+      return;
+    }
+    const resolvedProfessionalId =
+      session?.role === "organization_admin" ? professionalId || professionals[0]?.id : session?.userId;
+    const result = createClassSession({
+      title: title.trim(),
+      ...(resolvedProfessionalId ? { professionalId: resolvedProfessionalId } : {}),
+      startsAt: startsAt.toISOString(),
+      endsAt: endsAt.toISOString(),
+      capacity: Number(capacity),
+      waitlistEnabled: waitlist
+    });
+    if (result.ok) {
+      setModalOpen(false);
+      setTitle("");
+      setFormError(undefined);
+    } else setFormError(result.error);
+  }
 
   return <>
     <PageHeader eyebrow={isStudent ? "Agenda" : "Aulas e reservas"} title={isStudent ? "Escolha sua próxima aula" : "Agenda da academia"} description={isStudent ? "Reserve sua vaga, acompanhe a lotação e cancele com clareza quando precisar." : "Publique horários e acompanhe ocupação e lista de espera sem ultrapassar a capacidade."} actions={canManage ? <Button onClick={() => setModalOpen(true)}><Plus size={17} /><span>Nova aula</span></Button> : undefined} />

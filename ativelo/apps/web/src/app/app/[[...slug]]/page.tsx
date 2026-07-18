@@ -51,7 +51,8 @@ export default async function ProductPage({
   else if (section === "pessoas") screen = <PeopleScreen />;
   else if (section === "organizacao") screen = <OrganizationScreen />;
   else if (section === "relatorios") screen = <ReportsScreen />;
-  else if (section === "plataforma") screen = <PlatformScreen organizationId={id} />;
+  else if (section === "plataforma")
+    screen = id ? <PlatformScreen organizationId={id} /> : <PlatformScreen />;
   else if (section === "planos") screen = <PlansScreen />;
   else if (section === "auditoria") screen = <AuditScreen />;
   else if (section === "suporte" || section === "mensagens") screen = <SupportScreen />;

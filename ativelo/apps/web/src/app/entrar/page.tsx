@@ -6,5 +6,9 @@ export const metadata: Metadata = { title: "Entrar", robots: { index: false, fol
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ demo?: string }> }) {
   const params = await searchParams;
-  return <AuthShell><LoginForm preferredDemo={params.demo} /></AuthShell>;
+  return (
+    <AuthShell>
+      <LoginForm {...(params.demo ? { preferredDemo: params.demo } : {})} />
+    </AuthShell>
+  );
 }

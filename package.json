@@ -1,0 +1,13 @@
+{
+  "name": "personal",
+  "private": true,
+  "description": "Repo root shim — the Ativelo app lives in ./ativelo",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "npm --prefix ativelo run build --workspace=@ativelo/web",
+    "dev": "npm --prefix ativelo run dev",
+    "ci": "npm --prefix ativelo ci"
+  }
+}

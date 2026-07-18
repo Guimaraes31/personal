@@ -34,10 +34,32 @@ export function WorkoutSessionScreen({ sessionId }: { sessionId: string }) {
 
   if (!workoutSession || !plan || authSession?.role !== "student") return <div className="access-denied"><div><span className="access-denied__icon"><Info size={30} /></span><h1>Sessão não encontrada</h1><p>Ela pode pertencer a outra organização ou não estar disponível para este perfil.</p><Button type="button" onClick={() => router.replace("/app/treinos")}>Voltar aos treinos</Button></div></div>;
 
-  function previousMax(exerciseId: string) { return data.workoutSessions.filter((item) => item.id !== workoutSession.id && item.status === "completed").flatMap((item) => item.sets).filter((set) => set.exerciseId === exerciseId && set.status === "completed").reduce((max, set) => Math.max(max, set.load ?? 0), 0); }
-  function leave() { if (window.confirm("Sair do modo de treino? Seu progresso está salvo e você poderá continuar depois.")) router.push("/app/treinos"); }
-  function record(setId: string, prescription: typeof plan.exercises[number], repetitions: number, load: number) { const result = recordWorkoutSet({ sessionId, setId, repetitions, load }); if (result.ok) setRest(prescription.restSeconds); }
-  function finish() { const result = completeWorkoutSession({ sessionId, perceivedEffort: rpe, feedback }); if (result.ok) { setFinishOpen(false); router.push(`/app/historico?concluido=${sessionId}`); } }
+  const activeSession = workoutSession;
+  const activePlan = plan;
+
+  function previousMax(exerciseId: string) {
+    return data.workoutSessions
+      .filter((item) => item.id !== activeSession.id && item.status === "completed")
+      .flatMap((item) => item.sets)
+      .filter((set) => set.exerciseId === exerciseId && set.status === "completed")
+      .reduce((max, set) => Math.max(max, set.load ?? 0), 0);
+  }
+  function leave() {
+    if (window.confirm("Sair do modo de treino? Seu progresso está salvo e você poderá continuar depois.")) {
+      router.push("/app/treinos");
+    }
+  }
+  function record(setId: string, prescription: (typeof activePlan.exercises)[number], repetitions: number, load: number) {
+    const result = recordWorkoutSet({ sessionId, setId, repetitions, load });
+    if (result.ok) setRest(prescription.restSeconds);
+  }
+  function finish() {
+    const result = completeWorkoutSession({ sessionId, perceivedEffort: rpe, feedback });
+    if (result.ok) {
+      setFinishOpen(false);
+      router.push(`/app/historico?concluido=${sessionId}`);
+    }
+  }
 
   return <div className="workout-focus">
     {!online && <div className="offline-banner" role="status"><WifiOff size={15} /> Sem conexão. A sessão continua salva localmente.</div>}

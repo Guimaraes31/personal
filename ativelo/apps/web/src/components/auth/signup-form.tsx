@@ -25,7 +25,10 @@ export function SignupForm() {
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [formError, setFormError] = useState<string>();
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<Input>({ resolver: zodResolver(schema), defaultValues: { goal: "strength", terms: false } });
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<Input>({
+    resolver: zodResolver(schema),
+    defaultValues: { goal: "strength", terms: undefined as unknown as true }
+  });
 
   async function onSubmit(values: Input) {
     setFormError(undefined);
